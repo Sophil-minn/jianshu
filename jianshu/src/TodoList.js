@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import './style.css';
 import TodoItem from './TodoItem';
+import './style.css';
 // function TodoList() {
 //   return (
 //     <div>
@@ -21,20 +21,37 @@ class TodoList extends Component {
       inputValue: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleBtnClick = this.handleBtnClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   handleBtnClick() {
-    this.setState({
+    // this.setState({
+    //   list: [...this.state.list, this.state.inputValue],
+    //   inputValue: ''
+    // })
+    this.setState(() => ({
       list: [...this.state.list, this.state.inputValue],
       inputValue: ''
-    })
-    this.state.list.push('hello world');
+    }))
+    // this.state.list.push('hello world');
     console.log('handleBtnClick');
   }
   handleInputChange(e) {
     // console.log(e.target.value);
-    this.setState({
-      inputValue: e.target.value
-    });
+    // this.setState({
+    //   inputValue: e.target.value
+    // });
+    // this.setState(() => {
+    //   return {
+    //     inputValue: e.target.value
+    //   }
+    // })
+    const value = e.target.value
+    this.setState(() => (
+      {
+        inputValue: value
+      }
+    ))
   }
   handleItemClick(index) {
     console.log(index);
@@ -58,7 +75,7 @@ class TodoList extends Component {
         //return <li key={index} onClick={this.handleItemClick.bind(this, index)}>{item}</li>
         return (
           <TodoItem
-            del={this.handleDelete.bind(this)}
+            del={this.handleDelete}
             key={index}
             content={item}
             index={index}
@@ -76,7 +93,7 @@ class TodoList extends Component {
         }
         <label htmlFor="insertArea">输入内容</label>
         <input id="insertArea" className='input' value={this.state.inputValue} onChange={this.handleInputChange} />
-        <button style={{ background: 'red', color: 'white' }} onClick={this.handleBtnClick.bind(this)}>add</button>
+        <button style={{ background: 'red', color: 'white' }} onClick={this.handleBtnClick}>add</button>
         <ul>
           {this.getTodoItem()}
         </ul>
