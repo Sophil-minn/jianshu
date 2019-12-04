@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-
+import React, { Component, Fragment } from 'react';
+import './style.css'
 // function App() {
 //   return (
 //     <div>
@@ -8,9 +8,23 @@ import React, { Component } from 'react';
 //   );
 // }
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      show: true
+    }
+  }
+  handleToggole = () => {
+    this.setState({
+      show: this.state.show ? false : true
+    })
+  }
   render() {
     return (
-      <div>Hello Minn </div>
+      <Fragment>
+        <div className={this.state.show ? 'show' : 'hide'}> Hello Minn </div>
+        <button onClick={this.handleToggole}>toggle</button>
+      </Fragment>
     )
   }
 }
