@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoItem';
+import Test from './Test';
 import './style.css';
 // function TodoList() {
 //   return (
@@ -94,6 +95,7 @@ class TodoList extends Component {
     )
   }
   render() {
+    // console.log('TodoList render');
     return (
       <Fragment>
         {/* 多行注释 */}
@@ -106,6 +108,7 @@ class TodoList extends Component {
         <ul>
           {this.getTodoItem()}
         </ul>
+        <Test content={this.state.inputValue} />
       </Fragment>
     )
   }
