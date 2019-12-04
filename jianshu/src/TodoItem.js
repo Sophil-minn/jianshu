@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 class TodoItem extends React.Component {
   handleDelete = () => {
     // console.log(this.props.index);
@@ -8,11 +9,20 @@ class TodoItem extends React.Component {
   }
   // 子组件如果想和父组件，要调用父组件传递过来的方法
   render() {
-    const { content } = this.props;
+    const { content, test } = this.props;
     return (
-      <div onClick={this.handleDelete} dangerouslySetInnerHTML={{ __html: content }}></div>
+      <div onClick={this.handleDelete} dangerouslySetInnerHTML={{ __html: content + test }}>
+      </div>
     )
   }
 }
-
+TodoItem.propTypes = {
+  test: PropTypes.string.isRequired, //必须传递
+  content: PropTypes.string,
+  del: PropTypes.func,
+  index: PropTypes.number
+}
+TodoItem.defaultProps = {
+  test: 'minn'
+}
 export default TodoItem;
