@@ -7,8 +7,16 @@ class TodoItem extends React.Component {
     const { del, index } = this.props;
     del(index);
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.content !== this.props.content) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   // 子组件如果想和父组件，要调用父组件传递过来的方法
   render() {
+    console.log('child render');
     const { content } = this.props;
     return (
       <div onClick={this.handleDelete} dangerouslySetInnerHTML={{ __html: content }}>

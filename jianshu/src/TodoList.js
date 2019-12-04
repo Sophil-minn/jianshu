@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import TodoItem from './TodoItem';
+import axios from 'axios';
 import './style.css';
 // function TodoList() {
 //   return (
@@ -77,6 +78,16 @@ class TodoList extends Component {
       list.splice(index, 1);
       return { list }
     })
+  }
+  componentDidMount() {
+    // Ajax请求 
+    axios.get('/todolist.json').then((res) => {
+      this.setState(() => ({
+        list: [...res.data]
+      }))
+    }).catch((err) => {
+      console.error(err);
+    });
   }
   getTodoItem() {
     return (
