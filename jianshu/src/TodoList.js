@@ -36,9 +36,11 @@ class TodoList extends Component {
     this.setState((prevState) => ({
       list: [...prevState.list, prevState.inputValue],
       inputValue: ''
-    }))
+    }), () => {
+      console.log(this.ul.querySelectorAll('div').length);
+    })
     // this.state.list.push('hello world');
-    console.log('handleBtnClick');
+    // console.log(this.ul);
   }
   handleInputChange(e) {
     // console.log(e.target.value);
@@ -50,7 +52,7 @@ class TodoList extends Component {
     //     inputValue: e.target.value
     //   }
     // })
-    const value = e.target.value
+    const value = this.input.value
     this.setState(() => (
       {
         inputValue: value
@@ -102,9 +104,11 @@ class TodoList extends Component {
           // 单行注释
         }
         <label htmlFor="insertArea">输入内容</label>
-        <input id="insertArea" className='input' value={this.state.inputValue} onChange={this.handleInputChange} />
+        <input id="insertArea" ref={(input) => {
+          this.input = input
+        }} className='input' value={this.state.inputValue} onChange={this.handleInputChange} />
         <button style={{ background: 'red', color: 'white' }} onClick={this.handleBtnClick}>add</button>
-        <ul>
+        <ul ref={(ul) => { this.ul = ul }}>
           {this.getTodoItem()}
         </ul>
       </Fragment>
