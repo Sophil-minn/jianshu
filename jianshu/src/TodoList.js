@@ -29,8 +29,12 @@ class TodoList extends Component {
     //   list: [...this.state.list, this.state.inputValue],
     //   inputValue: ''
     // })
-    this.setState(() => ({
-      list: [...this.state.list, this.state.inputValue],
+    // this.setState(() => ({
+    //   list: [...this.state.list, this.state.inputValue],
+    //   inputValue: ''
+    // }))
+    this.setState((prevState) => ({
+      list: [...prevState.list, prevState.inputValue],
       inputValue: ''
     }))
     // this.state.list.push('hello world');
@@ -53,21 +57,26 @@ class TodoList extends Component {
       }
     ))
   }
-  handleItemClick(index) {
-    console.log(index);
-    // 拷贝一个副本 
-    const list = [...this.state.list];
-    list.splice(index, 1);
-    this.setState({
-      list
-    });
-  }
+  // handleItemClick(index) {
+  //   console.log(index);
+  //   // 拷贝一个副本 
+  //   const list = [...this.state.list];
+  //   list.splice(index, 1);
+  //   this.setState({
+  //     list
+  //   });
+  // }
   handleDelete(index) {
-    const list = [...this.state.list];
-    list.splice(index, 1);
-    this.setState({
-      list
-    });
+    // const list = [...this.state.list];
+    // list.splice(index, 1);
+    // this.setState({
+    //   list
+    // });
+    this.setState((prevState) => {
+      const list = [...prevState.list];
+      list.splice(index, 1);
+      return { list }
+    })
   }
   getTodoItem() {
     return (
