@@ -21,7 +21,7 @@ class TodoList extends Component {
           style={{ 'width': '300px', 'marginRight': '10px' }}
           onChange={this.handleInputChange}
         />
-        <Button type="primary">提交</Button>
+        <Button onClick={this.handleBtnClick} type="primary">提交</Button>
         <List
           style={{ 'margin': '10px 0 0 0', 'width': '300px', }}
           bordered
@@ -44,6 +44,12 @@ class TodoList extends Component {
   }
   handleStoreChange = () => {
     this.setState(store.getState());
+  }
+  handleBtnClick = () => {
+    const action = {
+      type: 'add_todo_item'
+    }
+    store.dispatch(action);
   }
 }
 export default TodoList;
