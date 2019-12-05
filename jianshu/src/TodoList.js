@@ -52,8 +52,11 @@ class TodoList extends Component {
     store.dispatch(action);
   }
   handleItemDelete(index) {
-    console.log('handleItemDelete');
-    console.log(index);
+    const action = {
+      type: 'delete_todo_item',
+      index
+    }
+    store.dispatch(action);
   }
 }
 export default TodoList;
