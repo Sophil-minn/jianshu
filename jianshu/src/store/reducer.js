@@ -6,6 +6,7 @@ const defaultState = {
   list: [1, 234, 435, 9, 67, 564]
 }
 // reducer 可以接受state 但是不能修改 state
+// 纯函数 给定固定的输入，就一定有固定的输入  而且不会有任何副作用（对参数的修改）
 export default (state = defaultState, action) => {
   // console.log(state, action);
   if (action.type === CHAGE_INPUT_VALUE) {
