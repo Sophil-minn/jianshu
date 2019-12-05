@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import 'antd/dist/antd.css';
-import { Input, Button, List } from 'antd';
 import store from './store'
+import TodoListUI from './TodoListUI'
 import { getInputChangeAction, getAddItemAction, getDeleteItemAction } from './store/actionCreators'
 
 class TodoList extends Component {
@@ -10,40 +9,30 @@ class TodoList extends Component {
     this.state = store.getState();
     console.log(store.getState());
     // 订阅store
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleItemDelete = this.handleItemDelete.bind(this);
+    this.handleBtnClick = this.handleBtnClick.bind(this);
+    this.handleStoreChange = this.handleStoreChange.bind(this);
     store.subscribe(this.handleStoreChange);
   }
   render() {
     console.log('render');
-    return (
-      <div style={{ 'margin': '10px 0 0 10px' }}>
-        <Input
-          value={this.state.inputValue}
-          placeholder="Minn  "
-          style={{ 'width': '300px', 'marginRight': '10px' }}
-          onChange={this.handleInputChange}
-        />
-        <Button onClick={this.handleBtnClick} type="primary">提交</Button>
-        <List
-          style={{ 'margin': '10px 0 0 0', 'width': '300px', }}
-          bordered
-          dataSource={this.state.list}
-          renderItem={(item, index) => (
-            <List.Item onClick={this.handleItemDelete.bind(this, index)}>
-              {item}
-            </List.Item>
-          )}
-        />
-      </div>
-    )
+    return <TodoListUI
+      inputValue={this.state.inputValue}
+      list={this.state.list}
+      handleInputChange={this.handleInputChange}
+      handleBtnClick={this.handleBtnClick}
+      handleItemDelete={this.handleItemDelete}
+    />
   }
   handleInputChange(e) {
     const action = getInputChangeAction(e.target.value)
     store.dispatch(action);
   }
-  handleStoreChange = () => {
+  handleStoreChange() {
     this.setState(store.getState());
   }
-  handleBtnClick = () => {
+  handleBtnClick() {
     const action = getAddItemAction()
     store.dispatch(action);
   }
