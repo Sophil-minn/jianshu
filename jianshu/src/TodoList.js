@@ -8,12 +8,19 @@ class TodoList extends Component {
     super(props);
     this.state = store.getState();
     console.log(store.getState());
+    // 订阅store
+    store.subscribe(this.handleStoreChange);
   }
   render() {
     console.log('render');
     return (
       <div style={{ 'margin': '10px 0 0 10px' }}>
-        <Input value={this.state.inputValue} placeholder="Minn  " style={{ 'width': '300px', 'marginRight': '10px' }} />
+        <Input
+          value={this.state.inputValue}
+          placeholder="Minn  "
+          style={{ 'width': '300px', 'marginRight': '10px' }}
+          onChange={this.handleInputChange}
+        />
         <Button type="primary">提交</Button>
         <List
           style={{ 'margin': '10px 0 0 0', 'width': '300px', }}
@@ -27,6 +34,16 @@ class TodoList extends Component {
         />
       </div>
     )
+  }
+  handleInputChange(e) {
+    const action = {
+      type: 'change_input_value',
+      value: e.target.value
+    }
+    store.dispatch(action);
+  }
+  handleStoreChange = () => {
+    this.setState(store.getState());
   }
 }
 export default TodoList;
