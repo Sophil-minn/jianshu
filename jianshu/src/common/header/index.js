@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWrapper } from './style'
-
+import { CSSTransition } from 'react-transition-group';
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -23,11 +23,17 @@ class Header extends Component {
               <span className="iconfont">&#xe636;</span>
             </NavItem>
             <SearchWrapper>
-              <NavSearch
-                className={this.state.focused ? 'focused' : ''}
-                onFocus={this.handleInputFocus}
-                onBlur={this.handleInputBlur}
-              ></NavSearch>
+              <CSSTransition
+                in={this.state.focused}
+                timeout={200}
+                classNames="slide"
+              >
+                <NavSearch
+                  className={this.state.focused ? 'focused' : ''}
+                  onFocus={this.handleInputFocus}
+                  onBlur={this.handleInputBlur}
+                ></NavSearch>
+              </CSSTransition>
               <span className={this.state.focused ? 'focused iconfont' : 'iconfont'}>&#xe60b;</span>
             </SearchWrapper>
           </Nav>
