@@ -3,19 +3,20 @@ import { connect } from 'react-redux';
 
 class TodoList extends Component {
   render() {
+    const { inputValue, list, changeInputValue, handleBtnClick } = this.props;
     return (
       <div>
         <div>
           <input
-            value={this.props.inputValue}
+            value={inputValue}
             type="text"
-            onChange={this.props.changeInputValue}
+            onChange={changeInputValue}
           />
-          <button onClick={this.props.handleBtnClick}>提交</button>
+          <button onClick={handleBtnClick}>提交</button>
         </div>
         <ul>
           {
-            this.props.list.map((item, index) => {
+            list.map((item, index) => {
               return <li key={index}>{item}</li>
             })
           }
