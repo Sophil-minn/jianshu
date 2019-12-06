@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import { GlobalStyled } from './style';
 
 class App extends Component {
   render() {
     return (
-      <div>Hell</div>
+      <div className="App">
+        <GlobalStyled />
+        hello
+      </div>
     )
   }
 }
