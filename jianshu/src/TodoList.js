@@ -8,7 +8,7 @@ class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = store.getState();
-    console.log(store.getState());
+    // console.log(store.getState());
     // 订阅store
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleItemDelete = this.handleItemDelete.bind(this);
@@ -37,7 +37,8 @@ class TodoList extends Component {
     //   store.dispatch(action);
     // });
     const action = getInitList();
-    console.log(action);
+    store.dispatch(action);
+    // console.log(action);
   }
   handleInputChange(e) {
     const action = getInputChangeAction(e.target.value)
