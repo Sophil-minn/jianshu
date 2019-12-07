@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Topic from './components/Topic'
 import Recomment from './components/Recomment'
 import List from './components/List'
@@ -11,7 +11,7 @@ import {
   HomeRight,
   BackTop
 } from './style'
-class Home extends Component {
+class Home extends PureComponent {
   handleScrollTop() {
     window.scrollTo(0, 0);
   }
@@ -34,6 +34,9 @@ class Home extends Component {
   componentDidMount() {
     this.props.changeHomeData();
     this.bindEvents();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.props.changeScrollTopShow);
   }
   bindEvents() {
     window.addEventListener('scroll', this.props.changeScrollTopShow);
