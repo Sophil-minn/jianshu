@@ -3,6 +3,8 @@ import Topic from './components/Topic'
 import Recomment from './components/Recomment'
 import List from './components/List'
 import Writer from './components/Writer'
+import { actionCreators } from './store';
+import { connect } from 'react-redux';
 import {
   HomeWrapper,
   HomeLeft,
@@ -24,5 +26,13 @@ class Home extends Component {
       </HomeWrapper>
     )
   }
+  componentDidMount() {
+    this.props.changeHomeData();
+  }
 }
-export default Home;
+const mapDispatch = (dispatch) => ({
+  changeHomeData() {
+    dispatch(actionCreators.getHomeInfo());
+  }
+});
+export default connect(null, mapDispatch)(Home);
