@@ -7,14 +7,12 @@ class Topic extends Component {
     return (
       <TopicWrapper>
         {
-          list.map((item) => {
-            return (
-              <TopicItem key={item.get('id')}>
-                <img className="topic-pic" src={item.get('imgUrl')} alt="" />
-                {item.get('title')}
-              </TopicItem>
-            )
-          })
+          list.map((item) => (
+            <TopicItem key={item.get('id')}>
+              <img className="topic-pic" src={item.get('imgUrl')} alt="" />
+              {item.get('title')}
+            </TopicItem>
+          ))
         }
       </TopicWrapper>
     )
