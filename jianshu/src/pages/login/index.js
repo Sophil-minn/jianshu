@@ -24,7 +24,7 @@ class Login extends PureComponent {
 }
 
 const mapState = (state) => ({
-  loginStatus: state.getIn(['login', 'login'])
+  loginStatus: state.getIn(['loginReducer', 'login'])
 })
 
 const mapDispatch = (dispatch) => ({
