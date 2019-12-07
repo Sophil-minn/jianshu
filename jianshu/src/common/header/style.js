@@ -18,7 +18,7 @@ export const Logo = styled.a.attrs({
   background-size:contain;
 `
 export const Nav = styled.div`
-  width:960px;
+  width:760px;
   height:100%;
   margin:0 auto;
 `
