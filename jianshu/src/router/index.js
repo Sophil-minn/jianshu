@@ -1,10 +1,11 @@
 import React from "react";
 import { Route } from 'react-router-dom';
-import Home from '../pages/home';
-import Detail from '../pages/detail/loadable';
-import Login from '../pages/login';
-import Hoc from '../pages/hoc';
-import Write from '../pages/write';
+import loadable from '../utils/loadable';
+const Home = loadable(() => import('../pages/home'));
+const Login = loadable(() => import('../pages/login'));
+const Hoc = loadable(() => import('../pages/hoc'));
+const Write = loadable(() => import('../pages/write'));
+const Detail = loadable(() => import('../pages/detail'));
 const routes = [
   {
     path: '/',
