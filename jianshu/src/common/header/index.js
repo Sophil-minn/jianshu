@@ -52,7 +52,7 @@ class Header extends PureComponent {
           </Link>
           <Nav>
             <NavItem className='left active'>首页</NavItem>
-            <NavItem className='left'>下载App</NavItem>
+            <Link to='/hoc'><NavItem className='left'>下载App</NavItem></Link>
             {
               login ?
                 <NavItem onClick={logout} className='right'>退出</NavItem> :
