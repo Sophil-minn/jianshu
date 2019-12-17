@@ -6,6 +6,7 @@ const Login = loadable(() => import('../pages/login'));
 const Hoc = loadable(() => import('../pages/hoc'));
 const Write = loadable(() => import('../pages/write'));
 const Detail = loadable(() => import('../pages/detail'));
+const A = loadable(() => import('../pages/hocComponent/A'));
 const routes = [
   {
     path: '/',
@@ -23,6 +24,9 @@ const routes = [
   }, {
     path: '/detail/:id',
     component: Detail
+  }, {
+    path: '/a/:id',
+    component: A
   },
 ];
 const Routers = () => {

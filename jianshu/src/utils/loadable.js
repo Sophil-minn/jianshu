@@ -6,6 +6,6 @@ export default (loader) => {
     loader,
     loading() {
       return <div>正在加载</div>
-    },
+    }
   });
 }

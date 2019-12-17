@@ -1,11 +1,4 @@
-import React, { PureComponent } from 'react';
+import EnhancedComponent from './EnhanceComponent';
+import ComponentClass from './Hoc';
 
-class Hoc extends PureComponent {
-  render() {
-    return (
-      <div>Hoc</div>
-    )
-  }
-}
-
-export default Hoc;
+export default ComponentClass(EnhancedComponent);
